@@ -1,12 +1,12 @@
 import numpy as np
 
 # print 10 random 3 dimensional vectors.
-num_vectors = 10
+num_vectors = 100
 dimensionality = 3
 np.random.seed(42)
 vectors = np.random.rand(num_vectors, dimensionality)
-print("Generated Vectors")
-print(vectors)
+# print("Generated Vectors")
+# print(vectors)
 
 
 def build_inverted_index(vectors):
@@ -32,7 +32,7 @@ def search_inverted_index(inverted_index, feature_value):
         return []
 
 
-search_value = 0.5
+search_value = 0
 result_indices = search_inverted_index(inverted_index, search_value)
 print(f"\nvectors with feature value {search_value}:")
 print(vectors[result_indices])
@@ -45,6 +45,7 @@ def build_kd_tree(vectors):
     return kdtree
 
 kd_tree = build_kd_tree(vectors)
+print(kd_tree)
 
 def search_kd_tree(kdtree, query_vector, k=2):
     _, indices = kdtree.query([query_vector], k=k)
@@ -68,3 +69,5 @@ print(vectors[result_indices])
 
 print(f"\n Query Vector: {query_vector}")
 print(f"Nearest Neighbors: {nearest_neighbors}")
+
+
